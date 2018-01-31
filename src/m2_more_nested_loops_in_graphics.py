@@ -4,9 +4,10 @@ in the context of TWO-DIMENSIONAL GRAPHICS.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
          their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # DONE 1
 
 import rosegraphics as rg
+import math
 
 
 def main():
@@ -52,6 +53,32 @@ def draw_upside_down_wall(rectangle, n, window):
     # TODO: 2. Implement and test this function.
     #     Some tests are already written for you (above).
     # ------------------------------------------------------------------
+    rectorg = rectangle
+    ulc = rectorg.get_upper_left_corner()
+    lrc = rectorg.get_lower_right_corner()
+    length = (ulc.x - lrc.x)
+    height = ulc.y - lrc.y
+    for k in range(n):
+        for o in range(int(k/2)):
+            rect = rg.Rectangle(rg.Point(ulc.x-(length*(o+(k%2))), ulc.y+(
+                height*k)),
+                                    rg.Point(
+                         lrc.x-(length*(o+(k%2))), lrc.y+(height * k)))
+            rect.outline_color='red'
+            rect.attach_to(window)
+            window.render()
+            print(rect)
+        for o in range(int(k / 2)):
+            rect = rg.Rectangle(
+                rg.Point(ulc.x + (length * (o + (k % 2))), ulc.y + (
+                    height * k)),
+                rg.Point(
+                    lrc.x + (length * (o + (k % 2))), lrc.y + (height * k)))
+            rect.outline_color = 'blue'
+            rect.attach_to(window)
+            window.render()
+            print(rect)
+
 
 
 # ----------------------------------------------------------------------
