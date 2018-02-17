@@ -50,7 +50,7 @@ def draw_upside_down_wall(rectangle, n, window):
     and n is nonnegative.
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE 2. Implement and test this function.
     #     Some tests are already written for you (above).
     # ------------------------------------------------------------------
     rectorg = rectangle
@@ -59,22 +59,21 @@ def draw_upside_down_wall(rectangle, n, window):
     length = (ulc.x - lrc.x)
     height = ulc.y - lrc.y
     for k in range(n):
-        for o in range(int(k/2)):
-            rect = rg.Rectangle(rg.Point(ulc.x-(length*(o+(k%2))), ulc.y+(
+        for o in range(int(k/2)+1):
+            rect = rg.Rectangle(rg.Point(ulc.x-((length/2)*(o*2+k%2)), ulc.y+(
                 height*k)),
                                     rg.Point(
-                         lrc.x-(length*(o+(k%2))), lrc.y+(height * k)))
+                         lrc.x-((length/2)*(o*2+k%2)), lrc.y+(height * k)))
             rect.outline_color='red'
             rect.attach_to(window)
             window.render()
             print(rect)
-        for o in range(int(k / 2)):
-            rect = rg.Rectangle(
-                rg.Point(ulc.x + (length * (o + (k % 2))), ulc.y + (
-                    height * k)),
-                rg.Point(
-                    lrc.x + (length * (o + (k % 2))), lrc.y + (height * k)))
-            rect.outline_color = 'blue'
+        for o in range(int(k/2)+1):
+            rect = rg.Rectangle(rg.Point(ulc.x+((length/2)*(o*2+k%2)), ulc.y+(
+                height*k)),
+                                    rg.Point(
+                         lrc.x+((length/2)*(o*2+k%2)), lrc.y+(height * k)))
+            rect.outline_color='blue'
             rect.attach_to(window)
             window.render()
             print(rect)
