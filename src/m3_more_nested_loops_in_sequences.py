@@ -169,8 +169,30 @@ def largest_negative_number(seq_seq):
     #   being constructed (so the SPACE allowed is limited to the
     #   give sequence of sequences plus any non-list variables you want).
     # ------------------------------------------------------------------
-    return 2
+    return 3
+    maxneg = -9999
 
+    # for k in range(0, len(seq_seq)):
+    #     if seq_seq[k] != []:
+    #         for l in range(0, len(seq_seq[k])):
+    #             if seq_seq[k][l] < 0:
+    #                 maxneg = seq_seq[k][l]
+    #                 print(maxneg)
+    #                 break
+
+
+    # for k in range(0, len(seq_seq)):
+    #     if seq_seq[k] != []:
+    #         for l in range(0, len(seq_seq[k])):
+    #             if seq_seq[k][l] < 0:
+    #                 if maxneg >= seq_seq[k][l]:
+    #                     maxneg = seq_seq[k][l]
+    #                     print(maxneg)
+    #
+    # for k in range(0, len(seq_seq)):
+    #     if seq_seq[k] != []:
+    #         return maxneg
+    return None
 
 def run_test_first_is_elsewhere_too():
     """ Tests the    first_is_elsewhere_too    function. """
@@ -403,7 +425,7 @@ def first_is_elsewhere_too(seq_seq):
     and the given argument is a sequence of sequences.
     """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE 6. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -421,9 +443,11 @@ def first_is_elsewhere_too(seq_seq):
     if seq_seq[0] != []:
 
         for k in range(1, len(seq_seq)):
-            for m in range(1, len(seq_seq[k])):
-                if seq_seq[0][m] == seq_seq[k][m]:
-                    return True
+            for m in range(0, len(seq_seq[k])):
+                for n in range(0, len(seq_seq[0])):
+                    if seq_seq[0][n] == seq_seq[k][m]:
+                        return True
+
         return False
     else:
         return False
